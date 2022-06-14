@@ -20,22 +20,31 @@ def quit():
     root.destroy()
 
     
+total_entries = 0
+name_count = 1
+    
 def print_details():
-    # these are the global variables that are used
-    global total_entries, name_count
-    name_count = 0
-    total_entries = 0
     # Create the column headings
     Label(root, font=("Helvetica 10 bold"),text="Row").grid(column=0, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Name").grid(column=1, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Item hired").grid(column=2, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Item Quantity").grid(column=3, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Reciept number").grid(column=4, row=9)
+    #add each item in the list onto its own row
+    while name_count < total_entries :
+        Label(root, text=name_count).grid(column=0,row=name_count+11)
+        Label(root, text=(customer_details[name_count][0])).grid(column=1,row=name_count+11)
+        Label(root, text=(customer_details[name_count][1])).grid(column=2,row=name_count+11)
+        Label(root, text=(customer_details[name_count][2])).grid(column=3,row=name_count+11)
+        Label(root, text=(customer_details[name_count][3])).grid(column=4,row=name_count+11)
+        root.geometry("")
+        name_count += 1
+
 
 
 
 #set up error messages if entry boxes are left empty    
-def check_inputs():
+def append_details():
     input_check = 0
     Label(root, text="      ") .grid(column=3, row=1)
     Label(root, text="      ") .grid(column=3, row=2)
@@ -43,25 +52,17 @@ def check_inputs():
     Label(root, text="      ") .grid(column=3, row=4)
     # Check that Full name is not blank, set error text if blank
     if len(entry.get()) == 0:
-        Label(root, fg="red", text="Required") .grid(column=2, row=1)
+        Label(root, fg="red", text="Required").grid(column=2, row=1)
         input_check = 1
-    #Check if only first name is entered in the full name entry           
-    if 0 < len(re.findall(r'\w+', entry.get())) < 2:
-        entry_name_first = Label(root, text="Only First name is entered. Enter the customer's Full Name", fg="red")
-        entry_name_first.grid(row=4, column=2)
-        
-    if len(re.findall(r'\w+', entry_name.get())) > 1:
-        entry_name_blank.destroy()
-        entry_name_first.destroy()
-    
+
     # Check that reciept number is not blank, set error text if blank
     if len(entry1.get()) == 0:
-        Label(root, fg="red", text="Required") .grid(column=2, row=2)
+        Label(root, fg="red", text="Required").grid(column=2, row=2)
         input_check = 1
     # Check the item quantity is not blank and between 5 and 10, set error text if blank
     if (entry_quantity.get().isdigit()):
         if int(entry_quantity.get()) < 1 or int(entry_quantity.get()) > 500:
-            Label(root, fg="red", text="1-500 only") .grid(column=2, row=4)
+            Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
             input_check = 1
     else:
         Label(root, fg="red", text="1-500 only") .grid(column=2, row=4)
@@ -70,21 +71,26 @@ def check_inputs():
     if len(entryIH.get()) == 0:
         Label(root, fg="red", text="Required") .grid(column=2, row=3)
         input_check = 1
-
+    # Set to default
+    entry.delete("")
+    entry1.delete("")
+    entryIH.delete("")
+    entry_quantity.delete("")
+    entry_row.delete("")
 
 
 
 #create entry box for customer name, receipt number
-entry = ttk.Entry(root, width=30)
-entry1 = ttk.Entry(root, width=30)
-entryIH = ttk.Entry(root, width=30)
-entry_quantity = ttk.Entry(root, width=30)
-entry_row = ttk.Entry(root, width=30)
+entry = ttk.Entry(root, width=23)
+entry1 = ttk.Entry(root, width=23)
+entryIH = ttk.Entry(root, width=23)
+entry_quantity = ttk.Entry(root, width=23)
+entry_row = ttk.Entry(root, width=23)
 
 
 entry.grid(row=1, column=1)
 entry1.grid(row=2, column=1)
-entryIH.grid(row=3, column=1)
+#entryIH.grid(row=3, column=1)
 entry_quantity.grid(row=4, column=1)
 entry_row.grid(row=5, column=1)
 
@@ -92,7 +98,7 @@ entry_row.grid(row=5, column=1)
 
 #Create/add buttons 
 buttonROW = ttk.Button(root, text="Delete row")
-buttonAP = ttk.Button(root, text="Append details", command=check_inputs)
+buttonAP = ttk.Button(root, text="Append details", command=append_details)
 buttonPRNT = ttk.Button(root, text="Print details", command=print_details)
 buttonQUIT = ttk.Button(root, text="Quit", command=quit)
 
@@ -122,7 +128,8 @@ lblrow.grid(row=5, column=0)
 
   
 #combo box
-#items = StringVar() item_hired = ttk.Combobox(root, state="readonly", textvariable=items, values=("balloon", "tables"))
+items = StringVar()
+item_hired = ttk.Combobox(root, state="readonly", textvariable=items, values=("balloon", "tables", "streamers", "balloon pump", "party poppers", "party hat", "gift wrapping paper", "birthday cards" )) .grid(row=3, column=1)
 
 
 root.geometry("500x450")
