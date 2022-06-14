@@ -1,11 +1,11 @@
 
-
-
-
-
-
 ######### THINGS NEEDED TO DO ##########
-#change the code so that all the inputs print even after they dissapear (when the append button has been clicked)
+# 1. change the code so that all the inputs print even after they dissapear (when the append button has been clicked)
+# 2. change the code so that if you click append details before inputting anything, the error messages show up, then dissapear when u input information into it and click append details again
+# 3. make it so that every time something gets appended then printed, the row number printed automatically shows up
+# 4. make it so that u can append and print multiple information and it prints underneath the previous details inputted
+# 5. set up a delete row function
+
 
 from tkinter import *
 from tkinter import ttk
