@@ -4,10 +4,11 @@
 # 2. change the code so that if you click append details before inputting anything, the error messages show up, then dissapear when u input information into it and click append
 # - details again) - STATUS: COMPLETED
 # 3. make it so that every time something gets appended then printed, the row number printed automatically shows up) - STATUS: COMPLETED
-# 4. make it so that u can append and print multiple information and it prints underneath the previous details inputted) - STATUS: COMPLETED
-# 5. set up a delete row function
+# 4. make it so that u can append and print multiple information and it prints underneath the   previous details inputted) - STATUS: COMPLETED
+# 5. set up a functional delete row function
 # 6. change the code so that when no details have been appended, and then printed, nothing shows up underneath the bold coloumns
-# 7. 
+# 7. aetup error message that does not allow the user to append and print details they have entered if they have not given a full name (they have only entered the first name)
+# 8. 
 
 
 from tkinter import *
@@ -22,7 +23,7 @@ root=Tk()
    # print("Customer's recipet number:" +val2)
    # print("row numbers#:" +val3)
    # if chvar.get()==1:
-     #   print("balloons")
+    #print("balloons")
 
 customer_details = []
 
@@ -66,20 +67,21 @@ def print_details():
 
 
 def delete_row ():
-    #these are the global variables that are used*
-    global customer_details, delete_item, total_entries, name_count
+    #these are the global variable(s)
+    global total_entries, name_count
     #find which row is to be deleted and delete it
     del customer_details[int(delete_item.get())]
-    total_entries -= 1
+    name_count = 0
+    total_entries = total_entries - 1
     delete_item.delete(0,'end')
     #clear the last item displayed on the GUI
-    Label(main_window, text="                    ").grid(column=0,row=name_count+10) 
-    Label(main_window, text="                    ").grid(column=1,row=name_count+10)
-    Label(main_window, text="                    ").grid(column=2,row=name_count+10)
-    Label(main_window, text="                    ").grid(column=3,row=name_count+10)
-    Label(main_window, text="                    ").grid(column=4,row=name_count+10)
+    Label(root, text="                    ").grid(column=0, row=name_count+10) 
+    Label(root, text="                    ").grid(column=1, row=name_count+10)
+    Label(root, text="                    ").grid(column=2, row=name_count+10)
+    Label(root, text="                    ").grid(column=3, row=name_count+10)
+    Label(root, text="                    ").grid(column=4, row=name_count+10)
     #print all the items in the list
-    print_customer_details()
+    print_details()
  
 
 
@@ -133,19 +135,23 @@ entry = ttk.Entry(root, width=23)
 entry1 = ttk.Entry(root, width=23)
 entryIH = ttk.Entry(root, width=23)
 entry_quantity = ttk.Entry(root, width=23)
-entry_row = ttk.Entry(root, width=23)
+delete_item = ttk.Entry(root, width=23)
+
+
+
+
 
 
 entry.grid(row=1, column=1)
 entry1.grid(row=2, column=1)
 entryIH.grid(row=3, column=1)
 entry_quantity.grid(row=4, column=1)
-entry_row.grid(row=5, column=1)
+delete_item.grid(row=5, column=1)
 
 
 
 #Create/add buttons 
-buttonROW = ttk.Button(root, text="Delete row")
+buttonROW = ttk.Button(root, text="Delete row", command=delete_row)
 buttonAP = ttk.Button(root, text="Append details", command=check_inputs)
 buttonPRNT = ttk.Button(root, text="Print details", command=print_details)
 buttonQUIT = ttk.Button(root, text="Quit", command=quit)
@@ -174,6 +180,8 @@ lblrow.grid(row=5, column=0)
 
 
 total_entries = 0
+
+
 #combo box
 #items = StringVar()
 #item_hired = ttk.Combobox(root, state="readonly", textvariable=items, values=("balloon", "tables", "streamers", "balloon pump", "party poppers", "party hat", "gift wrapping paper", "birthday cards" )) .grid(row=3, column=1)
