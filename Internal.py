@@ -1,10 +1,13 @@
 
 ######### THINGS NEEDED TO DO ##########
-# 1. change the code so that all the inputs print even after they dissapear (when the append button has been clicked)
-# 2. change the code so that if you click append details before inputting anything, the error messages show up, then dissapear when u input information into it and click append details again
-# 3. make it so that every time something gets appended then printed, the row number printed automatically shows up
-# 4. make it so that u can append and print multiple information and it prints underneath the previous details inputted
+# 1. change the code so that all the inputs print even after they dissapear (when the append button has been clicked) - STATUS: COMPLETED
+# 2. change the code so that if you click append details before inputting anything, the error messages show up, then dissapear when u input information into it and click append
+# - details again) - STATUS: COMPLETED
+# 3. make it so that every time something gets appended then printed, the row number printed automatically shows up) - STATUS: COMPLETED
+# 4. make it so that u can append and print multiple information and it prints underneath the previous details inputted) - STATUS: COMPLETED
 # 5. set up a delete row function
+# 6. change the code so that when no details have been appended, and then printed, nothing shows up underneath the bold coloumns
+# 7. 
 
 
 from tkinter import *
@@ -31,6 +34,7 @@ def quit():
     
 
 def append_details():
+    global total_entries, entry, entry1, entryIH, entry_quantity
     # append each item to its own area of the list
     customer_details.append([entry.get(), entry1.get(), entryIH.get(), entry_quantity.get()])
     #clear the boxes
@@ -38,6 +42,7 @@ def append_details():
     entry1.delete(0, 'end')
     entryIH.delete(0, 'end')
     entry_quantity.delete(0, 'end')
+    total_entries += 1
 
 
 
@@ -50,15 +55,18 @@ def print_details():
     Label(root, font=("Helvetica 10 bold"),text="Item hired").grid(column=2, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Item Quantity").grid(column=3, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Reciept number").grid(column=4, row=9)
-    #make it so that the function prints the details entered in the entry box
-    Label(root, font=("Helvetica 10"),text = entry.get()).grid(column=1, row=10)
-    Label(root, font=("Helvetica 10"),text = entry1.get()).grid(column=4, row=10)
-    Label(root, font=("Helvetica 10"),text = entryIH.get()).grid(column=2, row=10)
-    Label(root, font=("Helvetica 10"),text = entry_quantity.get()).grid(column=3, row=10)
-    Label(root, font=("Helvetica 10"),text = entry_row.get()).grid(column=0, row=10)
+# add each item in the list into its own row
+    while name_count < total_entries:
+        Label(root, text=name_count).grid(column=0, row=name_count+10)
+        Label(root, text=(customer_details[name_count][0])).grid(column=1, row=name_count+10)
+        Label(root, text=(customer_details[name_count][1])).grid(column=4, row=name_count+10)
+        Label(root, text=(customer_details[name_count][2])).grid(column=2, row=name_count+10)
+        Label(root, text=(customer_details[name_count][3])).grid(column=3, row=name_count+10)
+        name_count += 1
+
 
 def delete_row ():
-    #these are the global variables that are used
+    #these are the global variables that are used*
     global customer_details, delete_item, total_entries, name_count
     #find which row is to be deleted and delete it
     del customer_details[int(delete_item.get())]
@@ -162,8 +170,7 @@ lblname.grid(row=1, column=0, sticky=E)
 lblreciept.grid(row=2, column=0)
 lblitemH.grid(row=3, column=0)
 lblquantity.grid(row=4, column=0)
-lblrow.grid(row=5
-            , column=0)
+lblrow.grid(row=5, column=0)
 
 
 total_entries = 0
