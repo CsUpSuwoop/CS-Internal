@@ -5,10 +5,11 @@
 # - details again) - STATUS: COMPLETED
 # 3. make it so that every time something gets appended then printed, the row number printed automatically shows up) - STATUS: COMPLETED
 # 4. make it so that u can append and print multiple information and it prints underneath the   previous details inputted) - STATUS: COMPLETED
-# 5. set up a functional delete row function
-# 6. change the code so that when no details have been appended, and then printed, nothing shows up underneath the bold coloumns
-# 7. aetup error message that does not allow the user to append and print details they have entered if they have not given a full name (they have only entered the first name)
-# 8. 
+# 5. set up a functional delete row function  - STATUS: COMPLETED
+# 6. make it so that when multiple entries/customer details' have been printed, the delete row will completely delete that row and change the amount of details from say three people, to only two people's entries
+# 7. change the code so that when no details have been appended, and then printed, nothing shows up underneath the bold coloumns
+# 8. aetup error message that does not allow the user to append and print details they have entered if they have not given a full name (they have only entered the first name)
+
 
 
 from tkinter import *
@@ -64,15 +65,16 @@ def print_details():
         Label(root, text=(customer_details[name_count][2])).grid(column=2, row=name_count+10)
         Label(root, text=(customer_details[name_count][3])).grid(column=3, row=name_count+10)
         name_count += 1
+        print(name_count)
 
 
 def delete_row ():
     #these are the global variable(s)
-    global total_entries, name_count
+    global total_entries, delete_item, customer_details
     #find which row is to be deleted and delete it
-    del customer_details[int(delete_item.get())]
+    del customer_details[int(delete_item.get())] 
+    total_entries -= 1
     name_count = 0
-    total_entries = total_entries - 1
     delete_item.delete(0,'end')
     #clear the last item displayed on the GUI
     Label(root, text="                    ").grid(column=0, row=name_count+10) 
@@ -80,6 +82,30 @@ def delete_row ():
     Label(root, text="                    ").grid(column=2, row=name_count+10)
     Label(root, text="                    ").grid(column=3, row=name_count+10)
     Label(root, text="                    ").grid(column=4, row=name_count+10)
+
+    Label(root, text="                    ").grid(column=0, row=name_count+11) 
+    Label(root, text="                    ").grid(column=1, row=name_count+11)
+    Label(root, text="                    ").grid(column=2, row=name_count+11)
+    Label(root, text="                    ").grid(column=3, row=name_count+11)
+    Label(root, text="                    ").grid(column=4, row=name_count+11)
+
+    Label(root, text="                    ").grid(column=0, row=name_count+12) 
+    Label(root, text="                    ").grid(column=1, row=name_count+12)
+    Label(root, text="                    ").grid(column=2, row=name_count+12)
+    Label(root, text="                    ").grid(column=3, row=name_count+12)
+    Label(root, text="                    ").grid(column=4, row=name_count+12)
+
+    Label(root, text="                    ").grid(column=0, row=name_count+13) 
+    Label(root, text="                    ").grid(column=1, row=name_count+13)
+    Label(root, text="                    ").grid(column=2, row=name_count+13)
+    Label(root, text="                    ").grid(column=3, row=name_count+13)
+    Label(root, text="                    ").grid(column=4, row=name_count+13)
+
+    Label(root, text="                    ").grid(column=0, row=name_count+14) 
+    Label(root, text="                    ").grid(column=1, row=name_count+14)
+    Label(root, text="                    ").grid(column=2, row=name_count+14)
+    Label(root, text="                    ").grid(column=3, row=name_count+14)
+    Label(root, text="                    ").grid(column=4, row=name_count+14)
     #print all the items in the list
     print_details()
  
