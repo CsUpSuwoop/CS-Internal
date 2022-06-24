@@ -1,16 +1,4 @@
 
-######### THINGS NEEDED TO DO ##########
-# 1. change the code so that all the inputs print even after they dissapear (when the append button has been clicked) - STATUS: COMPLETED
-# 2. change the code so that if you click append details before inputting anything, the error messages show up, then dissapear when u input information into it and click append
-# - details again) - STATUS: COMPLETED
-# 3. make it so that every time something gets appended then printed, the row number printed automatically shows up) - STATUS: COMPLETED
-# 4. make it so that u can append and print multiple information and it prints underneath the   previous details inputted) - STATUS: COMPLETED
-# 5. set up a functional delete row function  - STATUS: COMPLETED
-# 6. make it so that when multiple entries/customer details' have been printed, the delete row will completely delete that row and change the amount of details from say three people, to only two people's entries
-# 7. change the code so that when no details have been appended, and then printed, nothing shows up underneath the bold coloumns
-# 8. aetup error message that does not allow the user to append and print details they have entered if they have not given a full name (they have only entered the first name)
-
-
 
 from tkinter import *
 from tkinter import ttk
@@ -132,16 +120,28 @@ def check_inputs():
     if len(entry1.get()) > 0:
         Label(root, text = "                  ").grid(column=2, row=2)
         input_check = 1
+    #check that reciept number does not have a letter in it, set error message if it does
+    if len(entry1.get()) != 0:
+        if entry1.get().strip().isdecimal() == False:
+            input_check = 1
+            Label(root, text="No letters, only numbers", fg="red") .grid(row=2, column=2)
+        if entry1.get().strip().isdecimal() == True:
+            Label(root, text = "                  ").grid(column=2, row=2)
+            input_check = 1
+            
     
     # Check the item quantity is not blank and between 1 and 500, set error text if blank
     if (entry_quantity.get().isdigit()):
-        if int(entry_quantity.get()) < 1 or int(entry_quantity.get()) > 500:
+        if int(entry_quantity.get()) < 1: 
+            Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
+        if int(entry_quantity.get()) > 500:
             Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
             input_check = 1
+            
     else:
         Label(root, fg="red", text="1-500 only") .grid(column=2, row=4)
         input_check = 1
-    if len(entry_quantity.get()) > 0:
+    if len(entry_quantity.get()) > 1:
         Label(root, text = "                  ").grid(column=2, row=4)
         input_check = 1
 
@@ -152,8 +152,15 @@ def check_inputs():
     if len(entryIH.get()) > 0:
         Label(root, text = "                  ").grid(column=2, row=3)
         input_check = 1
-    if input_check == 1:
-        append_details()
+    #append details if all requirements are met
+    if len(entry.get()) > 0:
+        if input_check == 1:
+            if len(entry1.get()) > 0:
+                if entry1.get().strip().isdecimal() == True:
+                    if int(entry_quantity.get()) > 1:
+                        if int(entry_quantity.get()) < 501:
+                            if len(entryIH.get()) > 0:
+                                append_details()
 
 
 #create entry box for customer name, receipt number
