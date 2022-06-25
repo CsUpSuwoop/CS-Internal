@@ -1,9 +1,19 @@
+##### JULIES PARTY HIRE TRACKER INTERNAL ##########
+# Author - Guransh Singh
+# Created - 7/05/22
 
+# To-do list:
+# 1. Setup specific error messages for each entry box, eg. no numbers can be entered for the customer name entry box, no letters can be entered for the quantity entry box
+# 2. Set up error message requiring the user  to enter their full name
+# 3. Set up a thing that when the user enters their name with all lower case for example, when printed the name has capital letters for the first letters.
+# 4. Make outcome more visually pleasing by adding some colour.
 
 from tkinter import *
 from tkinter import ttk
 
 root=Tk()
+
+
 #def callback():
   #  val1=entry.get()
   #  val2=entryIH.get()
@@ -124,9 +134,9 @@ def check_inputs():
     if len(entry1.get()) != 0:
         if entry1.get().strip().isdecimal() == False:
             input_check = 1
-            Label(root, text="No letters, only numbers", fg="red") .grid(row=2, column=2)
+            Label(root, text="Do not enter letter(s), only numbers", fg="red") .grid(row=2, column=2)
         if entry1.get().strip().isdecimal() == True:
-            Label(root, text = "                  ").grid(column=2, row=2)
+            Label(root, text = "                                                                               ").grid(column=2, row=2)
             input_check = 1
             
     
