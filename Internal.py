@@ -142,18 +142,20 @@ def check_inputs():
     
     # Check the item quantity is not blank and between 1 and 500, set error text if blank
     if (entry_quantity.get().isdigit()):
-        if int(entry_quantity.get()) < 1: 
+        if int(entry_quantity.get()) < 1:
             Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
-        if int(entry_quantity.get()) > 500:
-            Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
-            input_check = 1
-            
     else:
         Label(root, fg="red", text="1-500 only") .grid(column=2, row=4)
         input_check = 1
-    if len(entry_quantity.get()) > 1:
-        Label(root, text = "                  ").grid(column=2, row=4)
-        input_check = 1
+    if (entry_quantity.get().isdigit()):
+        if int(entry_quantity.get()) > 1:
+            Label(root, text="                       ").grid(column=2, row=4)
+            input_check = 1
+        if int(entry_quantity.get()) < 500:
+            Label(root, text="                       ").grid(column=2, row=4)
+            input_check = 1
+        if int(entry_quantity.get()) > 500:
+            Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
 
     # Check that item hired is not blank, set error text if blank
     if len(entryIH.get()) == 0:
@@ -168,7 +170,7 @@ def check_inputs():
             if len(entry1.get()) > 0:
                 if entry1.get().strip().isdecimal() == True:
                     if int(entry_quantity.get()) > 1:
-                        if int(entry_quantity.get()) < 501:
+                        if int(entry_quantity.get()) < 500:
                             if len(entryIH.get()) > 0:
                                 append_details()
 
