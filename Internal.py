@@ -5,9 +5,8 @@
 
 # To-do list:
 # 1.Setup specific error messages for each entry box, eg. no numbers can be entered for the customer name entry box, no letters can be entered for the quantity entry box - 1/4 completed
-# 2. Set up error message requiring the user  to enter their full name
-# 3. Set up a thing that when the user enters their name with all lower case for example, when printed the name has capital letters for the first letters.
-# 4. Make outcome more visually pleasing by adding some colour.
+# 2. Set up a thing that when the user enters their name with all lower case for example, when printed the name has capital letters for the first letters.
+# 3. Make outcome more visually pleasing by adding some colour.
 
 from tkinter import *
 from tkinter import ttk
@@ -212,7 +211,7 @@ buttonQUIT.grid(row=7, column=2, sticky=W+E, pady=5)
 
 #create labels 
 lbltitle = ttk.Label(root, text="Julies Party Hire", font=(("Arial"), 22))
-lblname= ttk.Label(text="Enter Your First Name:")
+lblname= ttk.Label(text="Enter Your Full Name:")
 lblreciept = ttk.Label(text="Reciept Number:")
 lblitemH = ttk.Label(text="Item Hired: ")
 lblquantity = ttk.Label(text="Item # quantity: ")
