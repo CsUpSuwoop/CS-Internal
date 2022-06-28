@@ -1,15 +1,17 @@
+
 ##### JULIES PARTY HIRE TRACKER INTERNAL ##########
 # Author - Guransh Singh
 # Created - 7/05/22
 
 # To-do list:
-# 1. Setup specific error messages for each entry box, eg. no numbers can be entered for the customer name entry box, no letters can be entered for the quantity entry box
+# 1.Setup specific error messages for each entry box, eg. no numbers can be entered for the customer name entry box, no letters can be entered for the quantity entry box - 1/4 completed
 # 2. Set up error message requiring the user  to enter their full name
 # 3. Set up a thing that when the user enters their name with all lower case for example, when printed the name has capital letters for the first letters.
 # 4. Make outcome more visually pleasing by adding some colour.
 
 from tkinter import *
 from tkinter import ttk
+
 
 root=Tk()
 
@@ -24,15 +26,13 @@ root=Tk()
    # if chvar.get()==1:
     #print("balloons")
 
-customer_details = []
-
-
+customer_details= []
 
 def quit():
     root.destroy()
 
     
-
+#my append function
 def append_details():
     global total_entries, entry, entry1, entryIH, entry_quantity
     # append each item to its own area of the list
@@ -46,12 +46,12 @@ def append_details():
 
 
 
-    
+#my print details function    
 def print_details():
     name_count = 0
     # Create the column headings
     Label(root, font=("Helvetica 10 bold"),text="Row").grid(column=0, row=9)
-    Label(root, font=("Helvetica 10 bold"),text="Customer Name").grid(column=1, row=9)
+    Label(root, font=("Helvetica 10 bold"),text="Customer's First Name").grid(column=1, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Item hired").grid(column=2, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Item Quantity").grid(column=3, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Reciept number").grid(column=4, row=9)
@@ -65,7 +65,7 @@ def print_details():
         name_count += 1
         print(name_count)
 
-
+#my delete row function
 def delete_row ():
     #these are the global variable(s)
     global total_entries, delete_item, customer_details
@@ -80,24 +80,28 @@ def delete_row ():
     Label(root, text="                    ").grid(column=2, row=name_count+10)
     Label(root, text="                    ").grid(column=3, row=name_count+10)
     Label(root, text="                    ").grid(column=4, row=name_count+10)
+    
 
     Label(root, text="                    ").grid(column=0, row=name_count+11) 
     Label(root, text="                    ").grid(column=1, row=name_count+11)
     Label(root, text="                    ").grid(column=2, row=name_count+11)
     Label(root, text="                    ").grid(column=3, row=name_count+11)
     Label(root, text="                    ").grid(column=4, row=name_count+11)
+    
 
     Label(root, text="                    ").grid(column=0, row=name_count+12) 
     Label(root, text="                    ").grid(column=1, row=name_count+12)
     Label(root, text="                    ").grid(column=2, row=name_count+12)
     Label(root, text="                    ").grid(column=3, row=name_count+12)
     Label(root, text="                    ").grid(column=4, row=name_count+12)
+    
 
     Label(root, text="                    ").grid(column=0, row=name_count+13) 
     Label(root, text="                    ").grid(column=1, row=name_count+13)
     Label(root, text="                    ").grid(column=2, row=name_count+13)
     Label(root, text="                    ").grid(column=3, row=name_count+13)
     Label(root, text="                    ").grid(column=4, row=name_count+13)
+    
 
     Label(root, text="                    ").grid(column=0, row=name_count+14) 
     Label(root, text="                    ").grid(column=1, row=name_count+14)
@@ -119,63 +123,61 @@ def check_inputs():
     # Check that Full name is not blank, set error text if blank
     if len(entry.get()) == 0:
         Label(root, fg="red", text="Required").grid(column=2, row=1)
-        input_check = 1
+        input_check += 1
     if len(entry.get()) > 0:
         Label(root, text = "                  ").grid(column=2, row=1)
-        input_check = 1
+        #check that first and last name has been entered, if only first, set up an error message
+        try:
+            entry.get().split(" ")[1]
+            Label(root, text= "                            ").grid(column=2, row=1)
+        except:
+            Label(root, fg="red", text="Enter FULL name").grid(column=2, row=1)
+            input_check += 1
+            
     # Check that reciept number is not blank, set error text if blank
     if len(entry1.get()) == 0:
         Label(root, fg="red", text="Required").grid(column=2, row=2)
-        input_check = 1
+        input_check += 1
     if len(entry1.get()) > 0:
         Label(root, text = "                  ").grid(column=2, row=2)
-        input_check = 1
     #check that reciept number does not have a letter in it, set error message if it does
     if len(entry1.get()) != 0:
         if entry1.get().strip().isdecimal() == False:
-            input_check = 1
+            input_check += 1
             Label(root, text="Do not enter letter(s), only numbers", fg="red") .grid(row=2, column=2)
         if entry1.get().strip().isdecimal() == True:
-            Label(root, text = "                                                                               ").grid(column=2, row=2)
-            input_check = 1
+            Label(root, text = "                                                              ").grid(column=2, row=2)
             
     
     # Check the item quantity is not blank and between 1 and 500, set error text if blank
     if (entry_quantity.get().isdigit()):
         if int(entry_quantity.get()) < 1:
             Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
+            input_check += 1
     else:
         Label(root, fg="red", text="1-500 only") .grid(column=2, row=4)
         input_check = 1
     if (entry_quantity.get().isdigit()):
         if int(entry_quantity.get()) > 1:
             Label(root, text="                       ").grid(column=2, row=4)
-            input_check = 1
         if int(entry_quantity.get()) < 500:
             Label(root, text="                       ").grid(column=2, row=4)
-            input_check = 1
         if int(entry_quantity.get()) > 500:
             Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
+            input_check += 1
 
     # Check that item hired is not blank, set error text if blank
     if len(entryIH.get()) == 0:
         Label(root, fg="red", text="Required") .grid(column=2, row=3)
-        input_check = 1
+        input_check += 1
     if len(entryIH.get()) > 0:
         Label(root, text = "                  ").grid(column=2, row=3)
-        input_check = 1
     #append details if all requirements are met
-    if len(entry.get()) > 0:
-        if input_check == 1:
-            if len(entry1.get()) > 0:
-                if entry1.get().strip().isdecimal() == True:
-                    if int(entry_quantity.get()) > 1:
-                        if int(entry_quantity.get()) < 500:
-                            if len(entryIH.get()) > 0:
-                                append_details()
+        if input_check == 0:
+            append_details()
 
 
-#create entry box for customer name, receipt number
+#create entry box for customer name, receipt number, what item(s) they will be purchasing, quantity of item(s) 
 entry = ttk.Entry(root, width=23)
 entry1 = ttk.Entry(root, width=23)
 entryIH = ttk.Entry(root, width=23)
@@ -210,7 +212,7 @@ buttonQUIT.grid(row=7, column=2, sticky=W+E, pady=5)
 
 #create labels 
 lbltitle = ttk.Label(root, text="Julies Party Hire", font=(("Arial"), 22))
-lblname= ttk.Label(text="Enter Your Name:")
+lblname= ttk.Label(text="Enter Your First Name:")
 lblreciept = ttk.Label(text="Reciept Number:")
 lblitemH = ttk.Label(text="Item Hired: ")
 lblquantity = ttk.Label(text="Item # quantity: ")
@@ -232,5 +234,5 @@ total_entries = 0
 #item_hired = ttk.Combobox(root, state="readonly", textvariable=items, values=("balloon", "tables", "streamers", "balloon pump", "party poppers", "party hat", "gift wrapping paper", "birthday cards" )) .grid(row=3, column=1)
 
 
-root.geometry("500x450")
+root.geometry("500x450+650+350")
 root.mainloop()
