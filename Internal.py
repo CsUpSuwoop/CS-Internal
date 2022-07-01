@@ -106,8 +106,7 @@ def delete_row ():
     Label(root, text="                                 ").grid(column=1, row=name_count+14)
     Label(root, text="                                 ").grid(column=2, row=name_count+14)
     Label(root, text="                                 ").grid(column=3, row=name_count+14)
-    Label(root, text="
-          ").grid(column=4, row=name_count+14)
+    Label(root, text="                                 ").grid(column=4, row=name_count+14)
     #print all the items in the list
     print_details()
  
