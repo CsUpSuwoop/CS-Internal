@@ -1,5 +1,7 @@
 "# CS-Internal"  
+
 **** Major change/code update log ****
+**************************************
 1. Worked on code from dates 10/06/22 to 14/06/22, committed code onto github for the 2nd time ever. From the 10th to the 12th I created all my labels, entry boxes and buttons. From the 12th to the 14th I worked on making my functions for my buttons.
 2. 14/06/2022 7.30pm - Accidentally deleted committed code file
 3. 14/06/2022 7.42pm - Re-commited code file onto github. Continued to build on my print_details function by adding a procedure where all the details that are entered in the entry boxes, print when the print button gets clicked, but if u fill the entry boxes out, then click the append button, then click the print button, nothing gets printed because of no information being in the entry boxes. Added a commented list of changes that need to be made in order to complete my code.
