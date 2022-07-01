@@ -4,7 +4,7 @@
 # Created - 7/05/22
 
 # To-do list:
-# 1.Setup specific error messages for each entry box, eg. no numbers can be entered for the customer name entry box, no letters can be entered for the quantity entry box - 1/4 completed
+# 1. Setup specific error messages for each entry box, eg. no numbers can be entered for the customer name entry box, no letters can be entered for the quantity entry box - 1/4 completed
 # 2. Set up a thing that when the user enters their name with all lower case for example, when printed the name has capital letters for the first letters.
 # 3. Make outcome more visually pleasing by adding some colour.
 
@@ -74,39 +74,40 @@ def delete_row ():
     name_count = 0
     delete_item.delete(0,'end')
     #clear the last item displayed on the GUI
-    Label(root, text="                    ").grid(column=0, row=name_count+10) 
-    Label(root, text="                    ").grid(column=1, row=name_count+10)
-    Label(root, text="                    ").grid(column=2, row=name_count+10)
-    Label(root, text="                    ").grid(column=3, row=name_count+10)
-    Label(root, text="                    ").grid(column=4, row=name_count+10)
+    Label(root, text="                                 ").grid(column=0, row=name_count+10) 
+    Label(root, text="                                 ").grid(column=1, row=name_count+10)
+    Label(root, text="                                 ").grid(column=2, row=name_count+10)
+    Label(root, text="                                 ").grid(column=3, row=name_count+10)
+    Label(root, text="                                 ").grid(column=4, row=name_count+10)
     
 
-    Label(root, text="                    ").grid(column=0, row=name_count+11) 
-    Label(root, text="                    ").grid(column=1, row=name_count+11)
-    Label(root, text="                    ").grid(column=2, row=name_count+11)
-    Label(root, text="                    ").grid(column=3, row=name_count+11)
-    Label(root, text="                    ").grid(column=4, row=name_count+11)
+    Label(root, text="                                 ").grid(column=0, row=name_count+11) 
+    Label(root, text="                                 ").grid(column=1, row=name_count+11)
+    Label(root, text="                                 ").grid(column=2, row=name_count+11)
+    Label(root, text="                                 ").grid(column=3, row=name_count+11)
+    Label(root, text="                                 ").grid(column=4, row=name_count+11)
     
 
-    Label(root, text="                    ").grid(column=0, row=name_count+12) 
-    Label(root, text="                    ").grid(column=1, row=name_count+12)
-    Label(root, text="                    ").grid(column=2, row=name_count+12)
-    Label(root, text="                    ").grid(column=3, row=name_count+12)
-    Label(root, text="                    ").grid(column=4, row=name_count+12)
+    Label(root, text="                                 ").grid(column=0, row=name_count+12) 
+    Label(root, text="                                 ").grid(column=1, row=name_count+12)
+    Label(root, text="                                 ").grid(column=2, row=name_count+12)
+    Label(root, text="                                 ").grid(column=3, row=name_count+12)
+    Label(root, text="                                 ").grid(column=4, row=name_count+12)
     
 
-    Label(root, text="                    ").grid(column=0, row=name_count+13) 
-    Label(root, text="                    ").grid(column=1, row=name_count+13)
-    Label(root, text="                    ").grid(column=2, row=name_count+13)
-    Label(root, text="                    ").grid(column=3, row=name_count+13)
-    Label(root, text="                    ").grid(column=4, row=name_count+13)
+    Label(root, text="                                 ").grid(column=0, row=name_count+13) 
+    Label(root, text="                                 ").grid(column=1, row=name_count+13)
+    Label(root, text="                                 ").grid(column=2, row=name_count+13)
+    Label(root, text="                                 ").grid(column=3, row=name_count+13)
+    Label(root, text="                                 ").grid(column=4, row=name_count+13)
     
 
-    Label(root, text="                    ").grid(column=0, row=name_count+14) 
-    Label(root, text="                    ").grid(column=1, row=name_count+14)
-    Label(root, text="                    ").grid(column=2, row=name_count+14)
-    Label(root, text="                    ").grid(column=3, row=name_count+14)
-    Label(root, text="                    ").grid(column=4, row=name_count+14)
+    Label(root, text="                                 ").grid(column=0, row=name_count+14) 
+    Label(root, text="                                 ").grid(column=1, row=name_count+14)
+    Label(root, text="                                 ").grid(column=2, row=name_count+14)
+    Label(root, text="                                 ").grid(column=3, row=name_count+14)
+    Label(root, text="
+          ").grid(column=4, row=name_count+14)
     #print all the items in the list
     print_details()
  
