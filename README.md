@@ -13,5 +13,6 @@
 9. 25/06/22 2.50pm - Added details, like file creation date and the author's name in comments, and also a to-do list of all the things i need to add in order for my code to be completed.
 10. 27/06/22 3.54pm - Fixed input checker problem, before the changes i made, if the customer entered a number that was less than zero eg. -55, or a number that was greater than 500, eg. 505 or 60000, and then if the append button was clicked, no error message would pop up, but the values would not append either which was good. In the changes i have made, i have made it so that if a number greater than 500 or a number less than 0 is entered and the append button is clicked, a error message does pop up now.
 11. 28/06/22 3.06pm - Added extra feature to the input checker, the user must enter their full name, if only one name is entered, an error message pops up, if the full name is entered then the programme will be able to continue. However the extra name is represented by just a space, if the user only enters one name, and presses the space bar, it will count as the full name.
+12. 3/07/22 5.15pm - Added another extra feature to the input checker, the user cannot enter any integers into the 'item hired' entry box, doing so will pop up an error message instructing them to only enter strings, in order for the code to continue.
 
 
