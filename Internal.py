@@ -3,10 +3,6 @@
 # Author - Guransh Singh
 # Created - 7/05/22
 
-# To-do list:
-# 1. Setup specific error messages for each entry box, eg. no numbers can be entered for the customer name entry box, no letters can be entered for the quantity entry box - 1/4 completed
-# 2. Set up a thing that when the user enters their name with all lower case for example, when printed the name has capital letters for the first letters.
-# 3. Make outcome more visually pleasing by adding some colour.
 
 from tkinter import *
 from tkinter import ttk
@@ -119,27 +115,31 @@ def check_inputs():
     Label(root, text="      ") .grid(column=3, row=2)
     Label(root, text="      ") .grid(column=5, row=6)
     Label(root, text="      ") .grid(column=3, row=4)
-    # Check that Full name is not blank, set error text if blank
+
+# Check that Full name is not blank, set error text if blank
     if len(entry.get()) == 0:
         Label(root, fg="red", text="Required").grid(column=2, row=1)
         input_check += 1
     if len(entry.get()) > 0:
         Label(root, text = "                  ").grid(column=2, row=1)
-        #check that first and last name has been entered, if only first, set up an error message
+#check that first and last name has been entered, if only first, set up an error message
         try:
             entry.get().split(" ")[1]
             Label(root, text= "                            ").grid(column=2, row=1)
         except:
             Label(root, fg="red", text="Enter FULL name").grid(column=2, row=1)
             input_check += 1
-            
-    # Check that reciept number is not blank, set error text if blank
+ 
+
+
+
+# Check that reciept number is not blank, set error text if blank
     if len(entry1.get()) == 0:
         Label(root, fg="red", text="Required").grid(column=2, row=2)
         input_check += 1
     if len(entry1.get()) > 0:
         Label(root, text = "                  ").grid(column=2, row=2)
-    #check that reciept number does not have a letter in it, set error message if it does
+#check that reciept number does not have a letter in it, set error message if it does
     if len(entry1.get()) != 0:
         if entry1.get().strip().isdecimal() == False:
             input_check += 1
@@ -148,32 +148,43 @@ def check_inputs():
             Label(root, text = "                                                              ").grid(column=2, row=2)
             
     
-    # Check the item quantity is not blank and between 1 and 500, set error text if blank
+# Check the item quantity is not blank and between 1 and 500, set error text if blank
     if (entry_quantity.get().isdigit()):
         if int(entry_quantity.get()) < 1:
-            Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
+            Label(root, fg="red", text="Required, 1-500 only").grid(column=2, row=4)
             input_check += 1
     else:
-        Label(root, fg="red", text="1-500 only") .grid(column=2, row=4)
+        Label(root, fg="red", text="Required, 1-500 only") .grid(column=2, row=4)
         input_check = 1
     if (entry_quantity.get().isdigit()):
         if int(entry_quantity.get()) > 1:
-            Label(root, text="                       ").grid(column=2, row=4)
+            Label(root, text="                                         ").grid(column=2, row=4)
         if int(entry_quantity.get()) < 500:
-            Label(root, text="                       ").grid(column=2, row=4)
+            Label(root, text="                                         ").grid(column=2, row=4)
         if int(entry_quantity.get()) > 500:
-            Label(root, fg="red", text="1-500 only").grid(column=2, row=4)
+            Label(root, fg="red", text="Required, 1-500 only").grid(column=2, row=4)
             input_check += 1
-
-    # Check that item hired is not blank, set error text if blank
+        
+# Check that item hired is not blank, set error text if blank
     if len(entryIH.get()) == 0:
         Label(root, fg="red", text="Required") .grid(column=2, row=3)
         input_check += 1
     if len(entryIH.get()) > 0:
-        Label(root, text = "                  ").grid(column=2, row=3)
-    #append details if all requirements are met
+        Label(root, text = "                         ").grid(column=2, row=3)
+# make sure no integers have been entered, set error message if an integer has been entered
+        if entryIH.get().isalpha() == False:
+            Label(root, fg='red', text="No number(s), only letters").grid(column=2,row=3)
+            input_check += 1
+        if entryIH.get().isalpha() == True:
+            Label(root, text="                                                                                          ").grid(column=2,row=3)
+            Label(root, text="                                                                                          ").grid(column=2,row=3)
+
+
+#append details if all requirements are met
         if input_check == 0:
             append_details()
+
+
 
 
 #create entry box for customer name, receipt number, what item(s) they will be purchasing, quantity of item(s) 
