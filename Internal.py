@@ -118,10 +118,10 @@ def check_inputs():
 
 # Check that Full name is not blank, set error text if blank
     if len(entry.get()) == 0:
-        Label(root, fg="red", text="Required").grid(column=2, row=1)
+        Label(root, fg="red", text="Required, do not leave this blank").grid(column=2, row=1)
         input_check += 1
     if len(entry.get()) > 0:
-        Label(root, text = "                  ").grid(column=2, row=1)
+        Label(root, text = "                                                                  ").grid(column=2, row=1)
 #check that first and last name has been entered, if only first, set up an error message
         try:
             entry.get().split(" ")[1]
@@ -135,10 +135,10 @@ def check_inputs():
 
 # Check that reciept number is not blank, set error text if blank
     if len(entry1.get()) == 0:
-        Label(root, fg="red", text="Required").grid(column=2, row=2)
+        Label(root, fg="red", text="Required, do not leave this blank").grid(column=2, row=2)
         input_check += 1
     if len(entry1.get()) > 0:
-        Label(root, text = "                  ").grid(column=2, row=2)
+        Label(root, text = "                                                    ").grid(column=2, row=2)
 #check that reciept number does not have a letter in it, set error message if it does
     if len(entry1.get()) != 0:
         if entry1.get().strip().isdecimal() == False:
@@ -167,10 +167,10 @@ def check_inputs():
         
 # Check that item hired is not blank, set error text if blank
     if len(entryIH.get()) == 0:
-        Label(root, fg="red", text="Required") .grid(column=2, row=3)
+        Label(root, fg="red", text="Required, do not leave this blank") .grid(column=2, row=3)
         input_check += 1
     if len(entryIH.get()) > 0:
-        Label(root, text = "                         ").grid(column=2, row=3)
+        Label(root, text = "                                                              ").grid(column=2, row=3)
 # make sure no integers have been entered, set error message if an integer has been entered
         if entryIH.get().isalpha() == False:
             Label(root, fg='red', text="No number(s), only letters").grid(column=2,row=3)
