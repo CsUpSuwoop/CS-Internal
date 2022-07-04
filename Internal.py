@@ -11,15 +11,7 @@ from tkinter import ttk
 root=Tk()
 
 
-#def callback():
-  #  val1=entry.get()
-  #  val2=entryIH.get()
-  #  val3=entry_row.get()
-   # print("Customer's full name :" +val1)
-   # print("Customer's recipet number:" +val2)
-   # print("row numbers#:" +val3)
-   # if chvar.get()==1:
-    #print("balloons")
+
 
 customer_details= []
 
@@ -237,11 +229,6 @@ lblrow.grid(row=5, column=0)
 
 
 total_entries = 0
-
-
-#combo box
-#items = StringVar()
-#item_hired = ttk.Combobox(root, state="readonly", textvariable=items, values=("balloon", "tables", "streamers", "balloon pump", "party poppers", "party hat", "gift wrapping paper", "birthday cards" )) .grid(row=3, column=1)
 
 
 root.geometry("500x450+650+350")
