@@ -46,7 +46,7 @@ def print_details():
     name_count = 0
     # Create the column headings
     Label(root, font=("Helvetica 10 bold"),text="Row").grid(column=0, row=9)
-    Label(root, font=("Helvetica 10 bold"),text="Customer's First Name").grid(column=1, row=9)
+    Label(root, font=("Helvetica 10 bold"),text="Customer's Full Name").grid(column=1, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Item hired").grid(column=2, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Item Quantity").grid(column=3, row=9)
     Label(root, font=("Helvetica 10 bold"),text="Reciept number").grid(column=4, row=9)
